@@ -1,0 +1,16 @@
+// File: lib/core/network/connection_checker.dart
+// Purpose: Shared core utility, theme, network, or error handling code.
+
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+
+abstract interface class ConnectionChecker {
+  Future<bool> get isConnected;
+}
+
+class ConnectionCheckerImpl implements ConnectionChecker {
+  final InternetConnection internetConnection;
+
+  ConnectionCheckerImpl({required this.internetConnection});
+  @override
+  Future<bool> get isConnected => internetConnection.hasInternetAccess;
+}
